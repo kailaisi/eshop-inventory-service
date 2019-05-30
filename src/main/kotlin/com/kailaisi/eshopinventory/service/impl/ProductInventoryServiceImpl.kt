@@ -1,5 +1,6 @@
 package com.kailaisi.eshopinventory.service.impl
 
+import com.alibaba.fastjson.JSONObject
 import com.kailaisi.eshopinventory.mapper.ProductInventoryMapper
 import com.kailaisi.eshopinventory.model.ProductInventory
 import com.kailaisi.eshopinventory.service.ProductInventoryService
@@ -40,5 +41,19 @@ class ProductInventoryServiceImpl : ProductInventoryService {
 
     override fun findById(id: Long): ProductInventory {
         return productInventoryMapper.findById(id)
+    }
+
+    override fun findByProductId(id: Long): ProductInventory {
+        var jedis = jedisPool.resource
+        var get = jedis.get("product_inventory_$id")
+        return if (!get.isNullOrEmpty()) {
+            JSONObject.parseObject(get, ProductInventory::class.java)
+        } else {
+            var price = productInventoryMapper.findByProductId(id)
+            price.let {
+                jedis.set("product_inventory_$id", JSONObject.toJSONString(it))
+            }
+            price
+        }
     }
 }

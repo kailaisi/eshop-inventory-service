@@ -12,4 +12,5 @@ interface ProductInventoryService {
     fun delete(id: Long)
     fun update(productInventory: ProductInventory)
     fun findById(id: Long): ProductInventory
+    fun findByProductId(id: Long): ProductInventory
 }

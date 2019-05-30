@@ -24,4 +24,10 @@ interface ProductInventoryMapper {
             Result(column = "product_id", property = "productId")
     )
     fun findById(id: Long): ProductInventory
+
+    @Select("select * from product_inventory where product_id=#{id} limit 1")
+    @Results(
+            Result(column = "product_id", property = "productId")
+    )
+    fun findByProductId(id: Long): ProductInventory
 }

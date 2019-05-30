@@ -46,4 +46,10 @@ class ProductInventoryControl {
     fun findById(id: Long): ProductInventory {
         return mService.findById(id)
     }
+
+    @RequestMapping("/findByProductId")
+    @ResponseBody
+    fun findByProductId(id: Long): ProductInventory {
+        return mService.findByProductId(id)
+    }
 }

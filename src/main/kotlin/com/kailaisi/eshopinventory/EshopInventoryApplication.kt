@@ -4,12 +4,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import redis.clients.jedis.JedisPool
 import org.apache.tomcat.jni.Socket.pool
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 import org.springframework.context.annotation.Bean
 import redis.clients.jedis.Jedis
 import redis.clients.jedis.JedisPoolConfig
 
 
 @SpringBootApplication
+@EnableEurekaClient
 class EshopInventoryApplication {
     @Bean
     fun jedis(): JedisPool {
