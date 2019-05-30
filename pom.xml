@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.kailaisi</groupId>
-    <artifactId>eshop-inventory-price</artifactId>
+    <artifactId>eshop-inventory-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>eshop-inventory</name>
     <description>库存服务</description>
